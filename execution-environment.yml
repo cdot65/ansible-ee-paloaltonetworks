@@ -1,10 +1,11 @@
----
 version: 1
 dependencies:
   galaxy: requirements.yml
   python: requirements.txt
 additional_build_steps:
-  prepend: |
-    RUN pip3 install --upgrade pip setuptools
+  prepend:
+  - RUN pip3 install --upgrade pip setuptools
+  - RUN pip3 install ansible-core==2.13.13
   append:
-    - RUN ls -la /etc
+  - RUN ls -la /etc
+  - RUN ansible-galaxy collection install community.general -p /usr/share/ansible/collections/ansible_collections

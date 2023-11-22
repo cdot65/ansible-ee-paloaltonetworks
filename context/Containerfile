@@ -22,9 +22,11 @@ RUN assemble
 FROM $EE_BASE_IMAGE
 USER root
 RUN pip3 install --upgrade pip setuptools
+RUN pip3 install ansible-core==2.13.13
 
 COPY --from=galaxy /usr/share/ansible /usr/share/ansible
 
 COPY --from=builder /output/ /output/
 RUN /output/install-from-bindep && rm -rf /output/wheels
 RUN ls -la /etc
+RUN ansible-galaxy collection install community.general -p /usr/share/ansible/collections/ansible_collections
