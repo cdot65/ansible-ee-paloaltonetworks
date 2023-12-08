@@ -1,11 +1,17 @@
-version: 1
+---
+version: 3
+
+images:
+  base_image:
+    name: quay.io/fedora/fedora:latest
+
 dependencies:
-  galaxy: requirements.yml
+  ansible_core:
+    package_pip: ansible-core
+  ansible_runner:
+    package_pip: ansible-runner
+  system:
+    - openssh-clients
+    - sshpass
   python: requirements.txt
-additional_build_steps:
-  prepend:
-  - RUN pip3 install --upgrade pip setuptools
-  - RUN pip3 install ansible-core==2.13.13
-  append:
-  - RUN ls -la /etc
-  - RUN ansible-galaxy collection install community.general -p /usr/share/ansible/collections/ansible_collections
+  galaxy: requirements.yml
