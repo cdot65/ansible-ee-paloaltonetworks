@@ -1,13 +1,7 @@
 collections:
-  # - name: https://github.com/cdot65/pan-os-ansible.git
-  #   type: git
-  #   version: 0c19e9f49b24cfb23e927baf31256f188c7bdc54
   - name: paloaltonetworks.panos
     type: galaxy
     version: 2.17.0
-  - name: ansible.windows
-    type: galaxy
-    version: 2.2.0
   - name: community.general
     type: galaxy
     version: 8.0.2
